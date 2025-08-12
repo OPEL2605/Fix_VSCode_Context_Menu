@@ -23,8 +23,8 @@ If VS Code is installed in a different location, update the script path accordin
 
 ## Installation
 
-1. Download the [`Fix_VSCode_Context_Menu.bat`](Fix_VSCode_Context_Menu.bat) file.
-2. Right-click the file and select **Run as administrator**.
+1. Download files.
+2. Right-click in the file **install_context_menu.bat** and select **Run as administrator**.
 3. Wait for the script to finish — Windows Explorer will restart automatically.
 4. Right-click anywhere (file, folder, desktop, or empty space) and you will see **Open with VS Code**.
 

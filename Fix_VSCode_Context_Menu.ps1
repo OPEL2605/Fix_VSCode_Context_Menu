@@ -1,47 +1,67 @@
-Write-Host "Open with VS Code' ..." -ForegroundColor Cyan
+Write-Host "Open with VS Code' 22 command..." -ForegroundColor Cyan
 
-Write-Host "Command 1"
+Write-Host "Creating registry key for 'Open with VS Code' in directory context menu..."
 New-Item -Path 'HKCU:\Software\Classes\Directory\shell\Open with VS Code' -Force | Out-Null
-Write-Host "Command 2"
+
+Write-Host "Setting icon for directory context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\shell\Open with VS Code' -Name 'Icon' -Value "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe,0"
-Write-Host "Command 3"
+
+Write-Host "Setting display name for directory context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\shell\Open with VS Code' -Name '(Default)' -Value 'Open with VS Code'
-Write-Host "Command 4"
+
+Write-Host "Creating 'command' subkey for directory context menu..."
 New-Item -Path 'HKCU:\Software\Classes\Directory\shell\Open with VS Code\command' -Force | Out-Null
-Write-Host "Command 5"
+
+Write-Host "Assigning command to open selected directory in VS Code..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\shell\Open with VS Code\command' -Name '(Default)' -Value "`"$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe`" `"%V`""
-Write-Host "Command 6"
+
+Write-Host "Creating registry key for 'Open with VS Code' in file context menu..."
 New-Item -Path 'HKCU:\Software\Classes\*\shell\Open with VS Code' -Force | Out-Null
-Write-Host "Command 7"
+
+Write-Host "Setting icon for file context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\*\shell\Open with VS Code' -Name 'Icon' -Value "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe,0"
-Write-Host "Command 8"
+
+Write-Host "Setting display name for file context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\*\shell\Open with VS Code' -Name '(Default)' -Value 'Open with VS Code'
-Write-Host "Command 9"
+
+Write-Host "Creating 'command' subkey for file context menu..."
 New-Item -Path 'HKCU:\Software\Classes\*\shell\Open with VS Code\command' -Force | Out-Null
-Write-Host "Command 10"
+
+Write-Host "Assigning command to open selected file in VS Code..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\*\shell\Open with VS Code\command' -Name '(Default)' -Value "`"$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe`" `"%1`""
-Write-Host "Command 11"
+
+Write-Host "Creating registry key for 'Open with VS Code' in folder background context menu..."
 New-Item -Path 'HKCU:\Software\Classes\Directory\Background\shell\Open with VS Code' -Force | Out-Null
-Write-Host "Command 12"
+
+Write-Host "Setting icon for folder background context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\Background\shell\Open with VS Code' -Name 'Icon' -Value "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe,0"
-Write-Host "Command 13"
+
+Write-Host "Setting display name for folder background context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\Background\shell\Open with VS Code' -Name '(Default)' -Value 'Open with VS Code'
-Write-Host "Command 14"
+
+Write-Host "Creating 'command' subkey for folder background context menu..."
 New-Item -Path 'HKCU:\Software\Classes\Directory\Background\shell\Open with VS Code\command' -Force | Out-Null
-Write-Host "Command 15"
+
+Write-Host "Assigning command to open current folder in VS Code..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\Directory\Background\shell\Open with VS Code\command' -Name '(Default)' -Value "`"$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe`" ."
-Write-Host "Command 16"
+
+Write-Host "Creating registry key for 'Open with VS Code' in desktop background context menu..."
 New-Item -Path 'HKCU:\Software\Classes\DesktopBackground\Shell\Open with VS Code' -Force | Out-Null
-Write-Host "Command 17"
+
+Write-Host "Setting icon for desktop background context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\DesktopBackground\Shell\Open with VS Code' -Name 'Icon' -Value "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe,0"
-Write-Host "Command 18"
+
+Write-Host "Setting display name for desktop background context menu..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\DesktopBackground\Shell\Open with VS Code' -Name '(Default)' -Value 'Open with VS Code'
-Write-Host "Command 19"
+
+Write-Host "Creating 'command' subkey for desktop background context menu..."
 New-Item -Path 'HKCU:\Software\Classes\DesktopBackground\Shell\Open with VS Code\command' -Force | Out-Null
-Write-Host "Command 20"
+
+Write-Host "Assigning command to open desktop folder in VS Code..."
 Set-ItemProperty -Path 'HKCU:\Software\Classes\DesktopBackground\Shell\Open with VS Code\command' -Name '(Default)' -Value "`"$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe`" ."
-Write-Host "Command 21"
+
+Write-Host "Restarting Windows Explorer to apply changes..."
 Stop-Process -Name explorer -Force
-Write-Host "Command 22"
 Start-Process explorer
 
+Write-Host "All 'Open with VS Code' context menu options have been added successfully!" -ForegroundColor Green
